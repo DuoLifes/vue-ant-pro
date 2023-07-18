@@ -1,24 +1,33 @@
 <template>
   <a-layout :class="['admin-layout', 'beauty-scroll']">
+    <!-- 移动设备菜单 -->
     <drawer v-if="isMobile" v-model="drawerOpen">
       <side-menu :theme="theme.mode" :menuData="menuData" :collapsed="false" :collapsible="false" @menuSelect="onMenuSelect"/>
     </drawer>
+    <!-- PC左侧菜单 -->
     <side-menu :class="[fixedSideBar ? 'fixed-side' : '']" :theme="theme.mode" v-else-if="layout === 'side' || layout === 'mix'" :menuData="sideMenuData" :collapsed="collapsed" :collapsible="true" />
+    <!-- 控制菜单折叠后主页自适应 -->
     <div v-if="fixedSideBar && !isMobile" :style="`width: ${sideMenuWidth}; min-width: ${sideMenuWidth};max-width: ${sideMenuWidth};`" class="virtual-side"></div>
+    <!-- 右侧设置开关 -->
     <drawer v-if="!hideSetting" v-model="showSetting" placement="right">
       <div class="setting" slot="handler">
         <a-icon :type="showSetting ? 'close' : 'setting'"/>
       </div>
       <setting />
     </drawer>
+    <!-- 右侧主页内容 -->
     <a-layout class="admin-layout-main beauty-scroll">
+      <!-- 顶栏 -->
       <admin-header :class="[{'fixed-tabs': fixedTabs, 'fixed-header': fixedHeader, 'multi-page': multiPage}]" :style="headerStyle" :menuData="headMenuData" :collapsed="collapsed" @toggleCollapse="toggleCollapse"/>
+      <!-- 控制页签折叠空间 -->
       <a-layout-header :class="['virtual-header', {'fixed-tabs' : fixedTabs, 'fixed-header': fixedHeader, 'multi-page': multiPage}]" v-show="fixedHeader"></a-layout-header>
+      <!-- 主页内容区 包含页签-->
       <a-layout-content class="admin-layout-content" :style="`min-height: ${minHeight}px;`">
         <div style="position: relative">
           <slot></slot>
         </div>
       </a-layout-content>
+      <!-- 页脚 -->
       <a-layout-footer style="padding: 0px">
         <page-footer :link-list="footerLinks" :copyright="copyright" />
       </a-layout-footer>

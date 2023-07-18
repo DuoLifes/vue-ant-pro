@@ -106,10 +106,11 @@ export default {
     ...mapState('setting', ['lang'])
   },
   created() {
-    request('/user/welcome', METHOD.GET).then(res => this.welcome = res.data)
-    request('/work/activity', METHOD.GET).then(res => this.activities = res.data)
-    request('/work/team', METHOD.GET).then(res => this.teams = res.data)
-    request('/project', METHOD.GET).then(res => {
+    const BASE_URL = process.env.VUE_APP_API_BASE_URL
+    request(`${BASE_URL}/user/welcome`, METHOD.GET).then(res => this.welcome = res.data)
+    request(`${BASE_URL}/work/activity`, METHOD.GET).then(res => this.activities = res.data)
+    request(`${BASE_URL}/work/team`, METHOD.GET).then(res => this.teams = res.data)
+    request(`${BASE_URL}/project`, METHOD.GET).then(res => {
         this.projects = res.data
         this.loading = false
       })

@@ -22,13 +22,13 @@ const options = {
     },
     {
       path: '/',
-      name: '首页',
+      name: '主页',
       component: TabsView,
       redirect: '/login',
       children: [
         {
           path: 'dashboard',
-          name: 'Dashboard',
+          name: '首页',
           meta: {
             icon: 'dashboard'
           },
@@ -38,16 +38,51 @@ const options = {
               path: 'workplace',
               name: '工作台',
               meta: {
-                page: {
-                  closable: false
-                }
+                icon: 'dashboard'
               },
               component: () => import('@/pages/dashboard/workplace'),
             },
             {
               path: 'analysis',
               name: '分析页',
+              meta: {
+                icon: 'dashboard'
+              },
               component: () => import('@/pages/dashboard/analysis'),
+            }
+          ]
+        },
+        {
+          path: 'exception',
+          name: '异常页',
+          meta: {
+            icon: 'warning',
+          },
+          component: BlankView,
+          children: [
+            {
+              path: '404',
+              name: 'Exp404',
+              meta: {
+                icon: 'warning',
+              },
+              component: () => import('@/pages/exception/404')
+            },
+            {
+              path: '403',
+              name: 'Exp403',
+              meta: {
+                icon: 'warning',
+              },
+              component: () => import('@/pages/exception/403')
+            },
+            {
+              path: '500',
+              name: 'Exp500',
+              meta: {
+                icon: 'warning',
+              },
+              component: () => import('@/pages/exception/500')
             }
           ]
         },
@@ -178,31 +213,6 @@ const options = {
         //     }
         //   ]
         // },
-        {
-          path: 'exception',
-          name: '异常页',
-          meta: {
-            icon: 'warning',
-          },
-          component: BlankView,
-          children: [
-            {
-              path: '404',
-              name: 'Exp404',
-              component: () => import('@/pages/exception/404')
-            },
-            {
-              path: '403',
-              name: 'Exp403',
-              component: () => import('@/pages/exception/403')
-            },
-            {
-              path: '500',
-              name: 'Exp500',
-              component: () => import('@/pages/exception/500')
-            }
-          ]
-        },
         // {
         //   path: 'components',
         //   name: '内置组件',
