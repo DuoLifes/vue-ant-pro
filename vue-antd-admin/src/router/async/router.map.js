@@ -18,17 +18,35 @@ const routerMap = {
     redirect: '/login',
     component: view.tabs
   },
-  dashboard: {
-    name: 'Dashboard',
-    component: view.blank
+  // dashboard: {
+  //   name: 'Dashboard',
+  //   component: view.blank
+  // },
+  // workplace: {
+  //   name: '工作台',
+  //   component: () => import('@/pages/dashboard/workplace')
+  // },
+  // analysis: {
+  //   name: '分析页',
+  //   component: () => import('@/pages/dashboard/analysis')
+  // },
+
+  // 异常页
+  exp403: {
+    authority: '*',
+    name: 'exp403',
+    path: '403',
+    component: () => import('@/pages/exception/403')
   },
-  workplace: {
-    name: '工作台',
-    component: () => import('@/pages/dashboard/workplace')
+  exp404: {
+    name: 'exp404',
+    path: '404',
+    component: () => import('@/pages/exception/404')
   },
-  analysis: {
-    name: '分析页',
-    component: () => import('@/pages/dashboard/analysis')
+  exp500: {
+    name: 'exp500',
+    path: '500',
+    component: () => import('@/pages/exception/500')
   },
   // form: {
   //   name: '表单页',
@@ -120,22 +138,6 @@ const routerMap = {
   //   icon: 'warning',
   //   component: view.blank
   // },
-  exp403: {
-    authority: '*',
-    name: 'exp403',
-    path: '403',
-    component: () => import('@/pages/exception/403')
-  },
-  exp404: {
-    name: 'exp404',
-    path: '404',
-    component: () => import('@/pages/exception/404')
-  },
-  exp500: {
-    name: 'exp500',
-    path: '500',
-    component: () => import('@/pages/exception/500')
-  },
   // components: {
   //   name: '小组件',
   //   icon: 'appstore-o',

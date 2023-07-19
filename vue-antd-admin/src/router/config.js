@@ -1,6 +1,6 @@
 import TabsView from '@/layouts/tabs/TabsView'
 import BlankView from '@/layouts/BlankView'
-// import PageView from '@/layouts/PageView'
+import PageView from '@/layouts/PageView'
 
 // 路由配置
 const options = {
@@ -52,40 +52,60 @@ const options = {
             }
           ]
         },
+        // 系统管理
         {
-          path: 'exception',
-          name: '异常页',
+          path: 'system',
+          name: '系统管理',
           meta: {
-            icon: 'warning',
+            icon: 'setting',
+            page: {
+              cacheAble: false
+            }
           },
-          component: BlankView,
+          component: PageView,
           children: [
             {
-              path: '404',
-              name: 'Exp404',
-              meta: {
-                icon: 'warning',
-              },
-              component: () => import('@/pages/exception/404')
-            },
-            {
-              path: '403',
-              name: 'Exp403',
-              meta: {
-                icon: 'warning',
-              },
-              component: () => import('@/pages/exception/403')
-            },
-            {
-              path: '500',
-              name: 'Exp500',
-              meta: {
-                icon: 'warning',
-              },
-              component: () => import('@/pages/exception/500')
+              path: 'userList',
+              name: '用户管理',
+              component: () => import('@/pages/system/userList'),
             }
           ]
         },
+        // 异常页
+        // {
+        //   path: 'exception',
+        //   name: '异常页',
+        //   meta: {
+        //     icon: 'warning',
+        //   },
+        //   component: BlankView,
+        //   children: [
+        //     {
+        //       path: '404',
+        //       name: 'Exp404',
+        //       meta: {
+        //         icon: 'warning',
+        //       },
+        //       component: () => import('@/pages/exception/404')
+        //     },
+        //     {
+        //       path: '403',
+        //       name: 'Exp403',
+        //       meta: {
+        //         icon: 'warning',
+        //       },
+        //       component: () => import('@/pages/exception/403')
+        //     },
+        //     {
+        //       path: '500',
+        //       name: 'Exp500',
+        //       meta: {
+        //         icon: 'warning',
+        //       },
+        //       component: () => import('@/pages/exception/500')
+        //     }
+        //   ]
+        // },
         // {
         //   path: 'form',
         //   name: '表单页',
